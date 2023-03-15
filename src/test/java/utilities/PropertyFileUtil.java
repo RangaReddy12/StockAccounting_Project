@@ -12,7 +12,9 @@ public static String getValueForKey(String key)throws Throwable
 	//conprop.load(new FileInputStream("./PropertyFiles/Environment.properties"));
 	conprop.load(new FileInputStream("C:\\Users\\PASKAL\\git\\StockAccounting_Project\\PropertyFiles\\Environment.properties"));
 
+	
 	return conprop.getProperty(key);
+	
 	
 }
 }
