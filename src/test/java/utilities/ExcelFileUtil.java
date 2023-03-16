@@ -97,7 +97,7 @@ public class ExcelFileUtil {
 			System.out.println(fname+"    "+mname+"   "+lname+"    "+eid);
 			//xl.setCellData("Empdata", i, 4, "Pass", "D:/Results.xlsx");
 			//xl.setCellData("Empdata", i, 4, "Fail", "D:/Results.xlsx");
-			xl.setCellData("Empdata", i, 4, "Blocked", "G:\\\\LiveProjectSharda\\\\GitHub\\\\Result1.xlsx");
+			xl.setCellData("Empdata", i, 4, "Blocked", "G:\\LiveProjectSharda\\GitHub\\Result1.xlsx");
 		}
 	}
 }
