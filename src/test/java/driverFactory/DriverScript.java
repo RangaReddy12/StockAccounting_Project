@@ -63,6 +63,14 @@ public class DriverScript
 						{
 							FunctionLibrary.closeBrowser(driver);
 						}
+						else if (ObjectType.equalsIgnoreCase("mouseClick")) 
+						{
+							FunctionLibrary.mouseClick(driver);
+						}
+						else if (ObjectType.equalsIgnoreCase("categoryTable")) 
+						{
+							FunctionLibrary.categoryTable(driver, TestData);
+						}
 						// write as pass into TCModule Sheet
 						xl.setCellData(TCModule, j, 5, "Pass", outputpath);
 						ModuleStatus="True";
