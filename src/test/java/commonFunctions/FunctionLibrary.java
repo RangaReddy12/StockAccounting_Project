@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -170,29 +171,62 @@ public class FunctionLibrary {
 	{
 
 		String Actualtitle = driver.getTitle();
-
 		try {
-
 			Assert.assertEquals(Actualtitle, ExpectedTitle, "Title is Not Matching");
-
 		} catch (Throwable t)
-
 		{
-
 			System.out.println(t.getMessage());
-
 		}
-
 	}
-
 	// method for close browser
-
 	public static void closeBrowser(WebDriver driver)
-
 	{
-
 		driver.quit();
-
 	}
-
+	//method for mouse click
+	public static void mouseClick(WebDriver driver) throws Throwable
+	{
+		Actions ac = new Actions(driver);
+		ac.moveToElement(driver.findElement(By.xpath("//a[.='Stock Items ']"))).perform();
+		Thread.sleep(3000);
+		ac.moveToElement(driver.findElement(By.xpath("(//a[contains(,'Stock Categories')])[2]"))).perform();
+		Thread.sleep(3000);	
+	}
+	//method for Category table
+	public static void categoryTable(WebDriver driver,String ExpectedData) throws Throwable
+	{
+		if(!driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("Search_textbox"))).isDisplayed())
+			//click search panel button if search textbox not visable
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("Search_panel"))).click();
+		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("Search_textbox"))).sendKeys(ExpectedData);
+		Thread.sleep(3000);
+		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("Search_button"))).click();
+		Thread.sleep(3000);
+		//capture category name from table
+		String ActualData = driver.findElement(By.xpath("//table[@id='tbl_a_stock_categorieslist']/tbody/tr[1]/td[4]/div/span/span")).getText();
+		System.out.println(ExpectedData+"   "+ActualData);
+		Assert.assertEquals(ExpectedData, ActualData,"Category name  Not found in table");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
