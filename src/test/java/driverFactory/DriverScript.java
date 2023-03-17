@@ -17,9 +17,10 @@ public class DriverScript {
 
 public static WebDriver driver;
 
-String inputpath ="D:\\7oclock_OJT\\ERP_Hybrid\\FileInput\\DataEngine.xlsx";
+String inputpath ="C:\\Users\\Anusha\\git\\StockAccounting_Project\\FileInput\\DataEngine.xlsx";
 
-String outputpath ="D:\\7oclock_OJT\\ERP_Hybrid\\FileOutput\\HybridResults.xlsx";
+String outputpath ="C:\\Users\\Anusha\\git\\StockAccounting_Project\\FileOutput\\HybridResults.xlsx";
+
 
 public void startTest()throws Throwable
 
@@ -125,6 +126,48 @@ FunctionLibrary.closeBrowser(driver);
 
 }
 
+else if(ObjectType.equalsIgnoreCase("mouseClick"))
+
+{
+
+FunctionLibrary.mouseClick(driver);
+
+}
+
+else if(ObjectType.equalsIgnoreCase("categoryTable"))
+
+{
+
+FunctionLibrary.categoryTable(driver, TestData);
+
+}
+else if(ObjectType.equalsIgnoreCase("captureData"))
+
+{
+
+FunctionLibrary.captureData(driver, LocatorType, LocatorValue);
+
+}
+
+else if(ObjectType.equalsIgnoreCase("supplierTable"))
+
+{
+
+FunctionLibrary.supplierTable(driver);
+
+}
+
+else if(ObjectType.equalsIgnoreCase("captureData1"))
+
+{
+
+FunctionLibrary.captureData1(driver, LocatorType, LocatorValue);
+
+}
+else if(ObjectType.equalsIgnoreCase("customerTable"))
+{
+	FunctionLibrary.customerTable(driver);
+}
 //write as pass into TCModule sheet
 
 xl.setCellData(TCModule, j, 5, "Pass", outputpath);
