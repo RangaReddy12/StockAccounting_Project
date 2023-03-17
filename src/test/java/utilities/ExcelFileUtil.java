@@ -85,7 +85,7 @@ public class ExcelFileUtil {
 		wb.write(fo);
 	}
 	public static void main(String[] args) throws Throwable {
-		ExcelFileUtil xl = new ExcelFileUtil("G:\\LiveProjectSharda\\GitHub\\Sample.xlsx");
+		ExcelFileUtil xl = new ExcelFileUtil("G:\\LiveProjectHRY\\GitHub\\Sample.xlsx");
 		int rc = xl.rowCount("Empdata");
 		System.out.println(rc);
 		for(int i=1;i<=rc;i++)
@@ -97,7 +97,7 @@ public class ExcelFileUtil {
 			System.out.println(fname+"    "+mname+"   "+lname+"    "+eid);
 			//xl.setCellData("Empdata", i, 4, "Pass", "D:/Results.xlsx");
 			//xl.setCellData("Empdata", i, 4, "Fail", "D:/Results.xlsx");
-			xl.setCellData("Empdata", i, 4, "Blocked", "G:\\\\LiveProjectSharda\\\\GitHub\\\\Result1.xlsx");
+			xl.setCellData("Empdata", i, 4, "Blocked", "G:\\LiveProjectHRY\\GitHub\\Result1.xlsx");
 		}
 	}
 }
