@@ -190,9 +190,7 @@ public class FunctionLibrary {
 	public static void closeBrowser(WebDriver driver)
 
 	{
-
 		driver.quit();
-
 	}
 
 }
