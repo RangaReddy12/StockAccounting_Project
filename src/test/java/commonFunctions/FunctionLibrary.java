@@ -1,5 +1,9 @@
 package commonFunctions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +19,8 @@ import utilities.PropertyFileUtil;
 public class FunctionLibrary 
 {
 	public static WebDriver driver;
+	public static String Expected ="";
+	public static String Actual ="";
 	// method for launch browser
 	public static WebDriver startBrowser() throws Throwable
 	{
@@ -118,7 +124,7 @@ public class FunctionLibrary
 		Actions ac = new Actions(driver);
 		ac.moveToElement(driver.findElement(By.xpath("//a[.='Stock Items ']"))).perform();
 		Thread.sleep(3000);
-		ac.moveToElement(driver.findElement(By.xpath("//a[contains(.,'Stock Categories')])[2]"))).click().perform();
+		ac.moveToElement(driver.findElement(By.xpath("(//a[contains(.,'Stock Categories')])[2]"))).click().perform();
 		Thread.sleep(3000);
 	}
 	
@@ -133,8 +139,37 @@ public class FunctionLibrary
 		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-button"))).click();
 		Thread.sleep(4000);
 		// capture category name from table
-		String ActualData = driver.findElement(By.xpath("//table[@id='tbl_a_stock_categorieslist']/tbody/tr[1]/td[4]/div/span/span")).getText();
+		String ActualData = driver.findElement(By.xpath("//table[@id='tbl_a_stock_categorieslist']/tbody/tr[3]/td[4]/div/span/span")).getText();
 		System.out.println(ExpectedData+"     "+ActualData);
 		Assert.assertEquals(ExpectedData, ActualData,"Category Name Not Found in Table");
+	}
+	
+	// method for capture supplier number
+	public static void captureData(WebDriver driver,String Locatortype, String LocatorValue) 
+	{
+		Expected = driver.findElement(By.name(LocatorValue)).getAttribute("value");
+	}
+	
+	// method for supplier table
+	public static void supplierTable(WebDriver driver) throws Throwable 
+	{
+		if(!driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-textbox"))).isDisplayed())
+			// click search panel button if search textbox not displayed
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-panel"))).click();
+		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-textbox"))).sendKeys(Expected);
+		Thread.sleep(4000);
+		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-button"))).click();
+		Thread.sleep(4000);
+		Actual =driver.findElement(By.xpath("//table[@id='tbl_a_supplierslist']/tbody/tr[1]/td[6]/div/span/span")).getText();
+		System.out.println(Expected+"    "+Actual);
+		Assert.assertEquals(Expected, Actual,"Supplier Number Not found in table");
+	}
+	
+	// method for date pattern
+	public static String generateDate() 
+	{
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("YYYY_MM_DD");
+		return df.format(date);
 	}
 }
