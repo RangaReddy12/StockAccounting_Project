@@ -186,7 +186,7 @@ public class FunctionLibrary
 
     Date date = new Date();
 
-    DateFormat df = new SimpleDateFormat("YYYY_MM_DD");
+    DateFormat df = new SimpleDateFormat("YYYY_MM_dd");
 
     return df.format(date);
 

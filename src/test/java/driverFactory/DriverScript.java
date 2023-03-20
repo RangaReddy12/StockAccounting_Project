@@ -12,8 +12,8 @@ import utilities.ExcelFileUtil;
 public class DriverScript 
 {
 	public static WebDriver driver;
-	String inputpath="C:\\Users\\Ganesh\\git\\StockAccounting_Project\\FileInput\\DataEngine.xlsx";;
-	String outputpath="C:\\Users\\Ganesh\\git\\StockAccounting_Project\\FileOutput\\HybrideResults.xlsx";
+	String inputpath="D:\\Radhika\\Live_Project\\StockAccounting_Project\\FileInput\\DataEngine.xlsx";;
+	String outputpath="D:\\Radhika\\Live_Project\\StockAccounting_Project\\FileOutput\\HybrideResults.xlsx";
 
 	ExtentReports report;
 	ExtentTest logger;
