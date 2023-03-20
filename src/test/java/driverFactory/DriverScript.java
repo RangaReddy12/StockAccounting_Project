@@ -99,6 +99,16 @@ public class DriverScript
 							FunctionLibrary.supplierTable(driver);
 							logger.log(LogStatus.INFO, Description);
 						}
+						else if (ObjectType.equalsIgnoreCase("captureData1")) 
+						{
+							FunctionLibrary.captureData1(driver, LocatorType, LocatorValue);
+							logger.log(LogStatus.INFO, Description);
+						}
+						else if (ObjectType.equalsIgnoreCase("customerTable")) 
+						{
+							FunctionLibrary.customerTable(driver);
+							logger.log(LogStatus.INFO, Description);
+						}
 						// write as pass into TCModule Sheet
 						xl.setCellData(TCModule, j, 5, "Pass", outputpath);
 						logger.log(LogStatus.PASS, Description);

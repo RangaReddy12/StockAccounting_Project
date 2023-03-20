@@ -165,6 +165,27 @@ public class FunctionLibrary
 		Assert.assertEquals(Expected, Actual,"Supplier Number Not found in table");
 	}
 	
+	// method for capture customer number
+	public static void captureData1(WebDriver driver,String Locatortype, String LocatorValue) 
+	{
+		Expected = driver.findElement(By.name(LocatorValue)).getAttribute("value");
+	}
+	
+	// method for customer table
+	public static void customerTable(WebDriver driver) throws Throwable 
+	{
+		if(!driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-textbox"))).isDisplayed())
+			// click search panel button if search textbox not displayed
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-panel"))).click();
+		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-textbox"))).sendKeys(Expected);
+		Thread.sleep(4000);
+		driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-button"))).click();
+		Thread.sleep(4000);
+		Actual =driver.findElement(By.xpath("//table[@id='tbl_a_customerslist']/tbody/tr[1]/td[5]/div/span/span")).getText();
+		System.out.println(Expected+"    "+Actual);
+		Assert.assertEquals(Expected, Actual,"Customer Number Not found in table");
+	}
+	
 	// method for date pattern
 	public static String generateDate() 
 	{
