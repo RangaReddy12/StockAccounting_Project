@@ -10,9 +10,9 @@ public class DriverScript {
 
 	public static WebDriver driver;
 
-	String inputpath = "G:\\LiveProjectSharda\\GitHub\\DataEngine.xlsx";
+	String inputpath = "C:\\Users\\Sudhakar\\Hybrid_frameworks\\StockAccounting_Project\\DataEngine.xlsx";
 
-	String outputpath = "G:\\LiveProjectSharda\\GitHub\\HybridResults.xlsx";
+	String outputpath = "C:\\Users\\Sudhakar\\Hybrid_frameworks\\StockAccounting_Project\\DataResult.xlsx";
 
 	public void startTest() throws Throwable
 
